@@ -77,7 +77,7 @@ def mail(item,em):
     pswd = st.secrets["code"]
     subject = "mashup mail"
     body = f"""
-    This mail was sent for mashup assignment program 2
+    Mashup is ready!
     """
     with st.spinner(text='Creating your mashup...'):
       msg = MIMEMultipart()
