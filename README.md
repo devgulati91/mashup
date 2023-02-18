@@ -1,4 +1,4 @@
-Mashup Generator Web Application
+Mashup Generator Web Application/n
 This is a web application that generates a mashup of songs based on the input provided by the user. The user can input the name of the celebrity whose songs they want in the mashup, the number of songs they want in the mashup, and the duration of each song. The generated mashup will be sent to the email ID provided by the user.
 
 Table of Contents
@@ -7,17 +7,17 @@ Table of Contents
 *Usage
 *License
 
-Features
-Generate a mashup of songs based on user input
-User can input the name of the celebrity whose songs they want in the mashup
-User can input the number of songs they want in the mashup
-User can input the duration of each song
-Generated mashup is sent to the email ID provided by the user
+Features/n
+Generate a mashup of songs based on user input/n
+User can input the name of the celebrity whose songs they want in the mashup/n
+User can input the number of songs they want in the mashup/n
+User can input the duration of each song/n
+Generated mashup is sent to the email ID provided by the user/n
 
 
-Technologies Used
-Python
-Pandas
+Technologies Used/n
+Python/n
+Pandas/n
 Numpy
 FFMPEG
 Streamlit
