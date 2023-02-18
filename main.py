@@ -115,7 +115,7 @@ def script(sn,em,no,dur):
     mail(zipit(file),em)
 with st.form(key="form1"):
     singer_name=st.text_input(label="Singer Name",value='')
-    no_of_vids=st.number_input(label="\Number of videos",value=0)
+    no_of_vids=st.number_input(label="Number of videos",value=0)
     dur=st.number_input(label="duration of each video",value=0)
     email=st.text_input(label="Email Id",value='')
     submit=st.form_submit_button(label="Generate Mashup")
