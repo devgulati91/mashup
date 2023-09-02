@@ -40,17 +40,32 @@ def download_videos_and_convert_into_audio(singer, n):
     print('downloading...')
     count=1
     for video in videos:
-      with st.spinner(text="Downloading song "+ str(count)+ "..."):
-        count+=1
+     with st.spinner(text="Downloading song " + str(count) + "..."):
+        count += 1
         try:
-          yt= YouTube(video)
-          video_1 =yt.streams.filter(file_extension='mp4',res="360p").first()
-          out_file = video_1.download(output_path=destination)
-          basePath, extension = os.path.splitext(out_file)
-          video = VideoFileClip(os.path.join(basePath + ".mp4"))
-        except:
-          print('')
-    print('downloaded')
+            yt = YouTube(video)
+            video_details = yt.vid_info.get('videoDetails', {})
+            length_seconds = video_details.get('lengthSeconds')
+            
+            # Check if length_seconds is not None and is a valid number
+            if length_seconds is not None and length_seconds.isdigit():
+                length_seconds = int(length_seconds)
+                
+                # Check if the video length is less than 5 minutes (300 seconds)
+                if length_seconds < 300:
+                    video_1 = yt.streams.filter(file_extension='mp4', res="360p").first()
+                    out_file = video_1.download(output_path=destination)
+                    basePath, extension = os.path.splitext(out_file)
+                    video = VideoFileClip(os.path.join(basePath + ".mp4"))
+                else:
+                    print(f"Skipping video with URL {video} due to excessive length.")
+            else:
+                print(f"Skipping video with URL {video} due to missing or invalid length information.")
+        except VideoUnavailable:
+            print(f"Video with URL {video} is unavailable.")
+        except Exception as e:
+            print(f"An error occurred while processing video with URL {video}: {str(e)}")
+
 
 
 def cut_first_y_sec(singer, n, y):
