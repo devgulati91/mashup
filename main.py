@@ -16,6 +16,7 @@ import pytube
 from pytube import Playlist,YouTube
 from pytube.exceptions import VideoUnavailable
 import os
+import pydub
 from pydub import AudioSegment
 
 def download_videos_and_convert_into_audio(singer, n):
