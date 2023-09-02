@@ -33,7 +33,7 @@ def download_videos_and_convert_into_audio(singer, n):
         if idx > n:
             break
         yt = YouTube(video)
-        if yt.length/60 < 5:
+        if yt.length is not None and yt.length / 60 < 5:
             videos.append(video)
             idx += 1
     destination = "Video_files"
