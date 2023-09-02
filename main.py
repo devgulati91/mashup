@@ -39,23 +39,17 @@ def download_videos_and_convert_into_audio(singer, n):
     print('downloading...')
     count=1
     for video in videos:
-     with st.spinner(text="Downloading song " + str(count) + "..."):
-        count += 1
+      with st.spinner(text="Downloading song "+ str(count)+ "..."):
+        count+=1
         try:
-            yt = YouTube(video)
-            video_details = yt.vid_info.get('videoDetails', {})
-            length_seconds = video_details.get('lengthSeconds')
-            if length_seconds and int(length_seconds) < 300:  # Check if video length is less than 5 minutes (300 seconds)
-                video_1 = yt.streams.filter(file_extension='mp4', res="360p").first()
-                out_file = video_1.download(output_path=destination)
-                basePath, extension = os.path.splitext(out_file)
-                video = VideoFileClip(os.path.join(basePath + ".mp4"))
-            else:
-                print(f"Skipping video with URL {video} due to invalid length or duration.")
-        except VideoUnavailable:
-            print(f"Video with URL {video} is unavailable.")
-        except Exception as e:
-            print(f"An error occurred while processing video with URL {video}: {str(e)}")
+          yt= YouTube(video)
+          video_1 =yt.streams.filter(file_extension='mp4',res="360p").first()
+          out_file = video_1.download(output_path=destination)
+          basePath, extension = os.path.splitext(out_file)
+          video = VideoFileClip(os.path.join(basePath + ".mp4"))
+        except:
+          print('')
+    print('downloaded')
 
 
 def cut_first_y_sec(singer, n, y):
