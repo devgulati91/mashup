@@ -39,7 +39,7 @@ def download_videos_and_convert_into_audio(singer, n):
     print('downloading...')
     count=1
     for video in videos:
-    with st.spinner(text="Downloading song " + str(count) + "..."):
+     with st.spinner(text="Downloading song " + str(count) + "..."):
         count += 1
         try:
             yt = YouTube(video)
